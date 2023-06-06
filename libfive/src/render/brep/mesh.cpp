@@ -9,7 +9,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #include <numeric>
 #include <fstream>
-#include <boost/algorithm/string/predicate.hpp>
 
 #include "libfive/eval/evaluator.hpp"
 
@@ -139,11 +138,11 @@ void Mesh::line(const Eigen::Vector3f& a, const Eigen::Vector3f& b)
 bool Mesh::saveSTL(const std::string& filename,
                    const std::list<const Mesh*>& meshes)
 {
-    if (!boost::algorithm::iends_with(filename, ".stl"))
-    {
-        std::cerr << "Mesh::saveSTL: filename \"" << filename
-                  << "\" does not end in .stl" << std::endl;
-    }
+    //if (!boost::algorithm::iends_with(filename, ".stl"))
+    //{
+    //    std::cerr << "Mesh::saveSTL: filename \"" << filename
+    //              << "\" does not end in .stl" << std::endl;
+    //}
     std::ofstream file;
     file.open(filename, std::ios::out | std::ios::binary);
     if (!file.is_open())

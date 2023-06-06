@@ -13,7 +13,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <limits>
 #include <set>
 
-#include <boost/algorithm/string/predicate.hpp>
 #include <png.h>
 
 #include "libfive/render/discrete/heightmap.hpp"
@@ -334,11 +333,11 @@ static void on_png_warn(png_structp p, png_const_charp msg)
 
 bool Heightmap::savePNG(std::string filename)
 {
-    if (!boost::algorithm::iends_with(filename, ".png"))
-    {
-        std::cerr << "Heightmap::savePNG: filename \"" << filename
-                  << "\" does not end in .png" << std::endl;
-    }
+    //if (!boost::algorithm::iends_with(filename, ".png"))
+    //{
+    //    std::cerr << "Heightmap::savePNG: filename \"" << filename
+    //              << "\" does not end in .png" << std::endl;
+    //}
 
     // Open up a file for writing
     FILE* output = fopen(filename.c_str(), "wb");
@@ -404,11 +403,11 @@ bool Heightmap::savePNG(std::string filename)
 
 bool Heightmap::saveNormalPNG(std::string filename)
 {
-    if (!boost::algorithm::iends_with(filename, ".png"))
-    {
-        std::cerr << "Heightmap::savePNG: filename \"" << filename
-                  << "\" does not end in .png" << std::endl;
-    }
+    //if (!boost::algorithm::iends_with(filename, ".png"))
+    //{
+    //    std::cerr << "Heightmap::savePNG: filename \"" << filename
+    //              << "\" does not end in .png" << std::endl;
+    //}
 
     // Open up a file for writing
     FILE* output = fopen(filename.c_str(), "wb");

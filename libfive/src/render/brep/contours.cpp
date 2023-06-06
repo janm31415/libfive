@@ -8,7 +8,6 @@ License, v. 2.0. If a copy of the MPL was not distributed with this file,
 You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #include <fstream>
-#include <boost/algorithm/string/predicate.hpp>
 
 #include "libfive/eval/evaluator.hpp"
 
@@ -50,11 +49,11 @@ std::unique_ptr<Contours> Contours::render(
 
 bool Contours::saveSVG(const std::string& filename)
 {
-    if (!boost::algorithm::iends_with(filename, ".svg"))
-    {
-        std::cerr << "Contours::saveSVG: filename \"" << filename
-                  << "\" does not end in .svg" << std::endl;
-    }
+    //if (!boost::algorithm::iends_with(filename, ".svg"))
+    //{
+    //    std::cerr << "Contours::saveSVG: filename \"" << filename
+    //              << "\" does not end in .svg" << std::endl;
+    //}
     std::ofstream file;
     file.open(filename, std::ios::out);
     if (!file.is_open())
