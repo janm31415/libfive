@@ -14,8 +14,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <stack>
 #include <unordered_set>
 
-#include <boost/container/small_vector.hpp>
-
 #include "libfive/tree/tree.hpp"
 #include "libfive/tree/data.hpp"
 #include "libfive/tree/archive.hpp"
@@ -630,7 +628,7 @@ Tree Tree::optimized_helper(
     struct CommutativeList {
         CommutativeList(Opcode::Opcode op) : op(op) {}
 
-        boost::container::small_vector<Tree, 4> list;
+        std::vector<Tree> list;
         Opcode::Opcode op;
     };
     std::stack<std::optional<CommutativeList>> commutative;
@@ -821,9 +819,8 @@ Tree Tree::optimized_helper(
             // components, so that we can subtract them.  This also puts
             // all affine terms in the form X * positive constant, which
             // encourages tree re-use.
-            using namespace boost::container;
-            small_vector<std::pair<const TreeData*, float>, 3> pos_;
-            small_vector<std::pair<const TreeData*, float>, 3> neg_;
+            std::vector<std::pair<const TreeData*, float>> pos_;
+            std::vector<std::pair<const TreeData*, float>> neg_;
             for (auto& p: map) {
                 if (p.second > 0.0f) {
                     pos_.push_back({p.first.ptr, p.second});

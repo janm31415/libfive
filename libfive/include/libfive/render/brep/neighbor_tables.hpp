@@ -9,9 +9,9 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 #pragma once
 
 #include <array>
+#include <vector>
 #include <utility>
 
-#include <boost/container/static_vector.hpp>
 #include "libfive/render/brep/indexes.hpp"
 #include "libfive/render/brep/util.hpp"
 
@@ -252,17 +252,15 @@ public:
      *
      *  Index it with a particular subspace, and it will return a list of
      *  neighbor + subspace (neighbor) indices that represent that subspace. */
-    using NeighborTableVec = boost::container::static_vector<
-            std::pair<NeighborIndex, NeighborIndex>,
-            ipow(2, N)>;
+    using NeighborTableVec = std::vector<
+            std::pair<NeighborIndex, NeighborIndex>>;
     static const NeighborTableVec& neighborTable(NeighborIndex n);
 
     /*  When collecting QEFs from a set of children, this table contains
      *  the list of which children + subspaces to sum for each subspace
      *  in the parent.  */
-    using QEFTableVec = boost::container::static_vector<
-            std::pair<CornerIndex, NeighborIndex>,
-            ipow(3, N)>;
+    using QEFTableVec = std::vector<
+            std::pair<CornerIndex, NeighborIndex>>;
     static const QEFTableVec& qefSumTable(NeighborIndex n);
 
 protected:

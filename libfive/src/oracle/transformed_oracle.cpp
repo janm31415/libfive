@@ -161,7 +161,7 @@ void TransformedOracle::evalDerivArray(
 }
 
 void TransformedOracle::evalFeatures(
-    boost::container::small_vector<Feature, 4>& out)
+    std::vector<Feature>& out)
 {
     auto ctx = dynamic_cast<Context*>(context.get());
     assert(context == nullptr || ctx != nullptr);
@@ -180,7 +180,7 @@ void TransformedOracle::evalFeatures(
     auto yFeatures = yEvaluator.features_(pt);
     auto zFeatures = zEvaluator.features_(pt);
 
-    boost::container::small_vector<Feature, 4> underlyingOut;
+    std::vector<Feature> underlyingOut;
     underlying->set(transformedPoint);
 
     underlying->bind(ctx ? ctx->u : nullptr);

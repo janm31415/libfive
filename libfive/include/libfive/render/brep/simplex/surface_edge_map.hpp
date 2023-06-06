@@ -8,8 +8,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #pragma once
 
-#include <boost/container/small_vector.hpp>
-
 namespace libfive {
 
 /*  At various points while meshing, we want to associate
@@ -67,8 +65,8 @@ public:
     }
 
 protected:
-    boost::container::small_vector<Key, Size> keys;
-    boost::container::small_vector<Value, Size> values;
+    std::vector<Key> keys;
+    std::vector<Value> values;
 };
 
 }   // namespace libfive

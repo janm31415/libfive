@@ -10,7 +10,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 #pragma once
 
 #include <Eigen/Eigen>
-#include <boost/container/small_vector.hpp>
 
 #include "libfive/eval/eval_array_size.hpp"
 #include "libfive/eval/interval.hpp"
@@ -135,7 +134,7 @@ public:
 
     /*  Returns the set of features at the point stored in slot 0.  */
     virtual void evalFeatures(
-            boost::container::small_vector<Feature, 4>& out)=0;
+            std::vector<Feature>& out)=0;
 
     /*
      *  Oracles are evaluated within a particular context,

@@ -9,8 +9,7 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #include <numeric>
 #include <fstream>
-
-#include <boost/container/static_vector.hpp>
+#include <vector>
 
 #include "libfive/eval/evaluator.hpp"
 
@@ -84,7 +83,7 @@ void HybridMesher::load(const std::array<const HybridTree<3>*, 4>& ts)
         bool inside;
         bool on_surface;
     };
-    boost::container::static_vector<SubspaceVertex, 11> subvs;
+    std::vector<SubspaceVertex> subvs;
     auto saveSubspaceVertex = [&subvs, &ts](unsigned index, NeighborIndex s) {
         assert(ts.at(index)->leaf != nullptr);
         assert(ts.at(index)->leaf->index[s.i] != 0);

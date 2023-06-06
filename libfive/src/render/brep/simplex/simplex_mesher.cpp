@@ -10,8 +10,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <numeric>
 #include <fstream>
 
-#include <boost/container/static_vector.hpp>
-
 #include "libfive/render/brep/simplex/simplex_mesher.hpp"
 #include "libfive/render/brep/simplex/simplex_tree.hpp"
 #include "libfive/render/brep/indexes.hpp"
@@ -80,7 +78,7 @@ void SimplexMesher::load(const std::array<const SimplexTree<3>*, 4>& ts)
         uint64_t index;
         bool inside;
     };
-    boost::container::static_vector<SubspaceVertex, 11> subvs;
+    std::vector<SubspaceVertex> subvs;
     auto saveSubspaceVertex = [&subvs, &ts](unsigned index, NeighborIndex s) {
         assert(ts.at(index)->leaf != nullptr);
         assert(ts.at(index)->leaf->sub[s.i].load()->index.load() != 0);

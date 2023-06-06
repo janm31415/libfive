@@ -8,7 +8,6 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #pragma once
 
-#include <boost/container/small_vector.hpp>
 #include <Eigen/Eigen>
 
 namespace libfive
@@ -71,7 +70,7 @@ public:
     Eigen::Vector3f deriv;
 
 protected:
-    boost::container::small_vector<Eigen::Vector3f, 4> epsilons;
+    std::vector<Eigen::Vector3f> epsilons;
 };
 
 }   // namespace libfive

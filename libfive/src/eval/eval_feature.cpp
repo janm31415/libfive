@@ -115,13 +115,13 @@ bool FeatureEvaluator::isInside(const Eigen::Vector3f& p,
     return !outside;
 }
 
-const boost::container::small_vector<Feature, 4>&
+const std::vector<Feature>&
     FeatureEvaluator::features_(const Eigen::Vector3f& p)
 {
     return features_(p, deck->tape);
 }
 
-const boost::container::small_vector<Feature, 4>&
+const std::vector<Feature>&
     FeatureEvaluator::features_(const Eigen::Vector3f& p,
                                 const Tape::Handle& tape)
 {

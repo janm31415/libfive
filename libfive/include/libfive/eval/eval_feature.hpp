@@ -75,9 +75,9 @@ public:
      *  Checks for features at the given position, returning a list
      *  of the raw features themselves
      */
-    const boost::container::small_vector<Feature, 4>&
+    const std::vector<Feature>&
         features_(const Eigen::Vector3f& p);
-    const boost::container::small_vector<Feature, 4>&
+    const std::vector<Feature>&
         features_(const Eigen::Vector3f& p, const std::shared_ptr<Tape>& tape);
 
 protected:
@@ -88,7 +88,7 @@ protected:
                     Clause::Id a, Clause::Id b);
 
     /*  Raw feature data */
-    Eigen::Array<boost::container::small_vector<Feature, 4>,
+    Eigen::Array<std::vector<Feature>,
                  1, Eigen::Dynamic> f;
 
     /*  filled(id) represents how many slots of v.row(id) have been filled

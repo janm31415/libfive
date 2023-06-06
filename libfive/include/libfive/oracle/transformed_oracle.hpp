@@ -50,7 +50,7 @@ public:
                      3, Eigen::Dynamic, true> out) override;
 
     void evalFeatures(
-        boost::container::small_vector<Feature, 4>& out) override;
+        std::vector<Feature>& out) override;
 
     /*
      *  Returns a context that pushes into each evaluator and the underlying

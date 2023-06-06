@@ -136,8 +136,8 @@ bool Feature::check(const Eigen::Vector3f& e, bool* duplicate) const
     // a linear programming system, but N should be relatively small.
 
     // These are the planes of the polytope, in the form n * x = d
-    using boost::container::small_vector;
-    small_vector<std::pair<Eigen::Vector3f, float>, 16> planes;
+    using std::vector;
+    std::vector<std::pair<Eigen::Vector3f, float>> planes;
     for (const auto& e : es) {
         planes.push_back(std::make_pair(e, 0.0));
     }
@@ -150,7 +150,7 @@ bool Feature::check(const Eigen::Vector3f& e, bool* duplicate) const
     planes.push_back(std::make_pair(Eigen::Vector3f(0, 0, -1), 1));
 
     // We build the polytope corners with an expensive loop
-    small_vector<Eigen::Vector3f, 32> corners;
+    std::vector<Eigen::Vector3f> corners;
     for (unsigned i=0; i < planes.size(); ++i) {
         for (unsigned j=i; j < planes.size(); ++j) {
             for (unsigned k=j; k < planes.size(); ++k) {

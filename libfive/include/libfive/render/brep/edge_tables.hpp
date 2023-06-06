@@ -9,7 +9,7 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 #pragma once
 
 #include <array>
-#include <boost/container/static_vector.hpp>
+#include <vector>
 
 #include "libfive/render/brep/util.hpp"
 #include "libfive/render/brep/indexes.hpp"
@@ -28,8 +28,8 @@ template <unsigned N>
 class EdgeTables
 {
 public:
-    using Table = boost::container::static_vector<
-        NeighborIndex, ipow(3, N) - 1>;
+    using Table = std::vector<
+        NeighborIndex>;
 
     /*  For each subspace in an N-dimensional subspace cell, returns
      *  the lower-dimensional subspaces which it is connected to.
