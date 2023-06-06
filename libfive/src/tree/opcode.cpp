@@ -8,8 +8,8 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #include <iostream>
 #include <map>
-
-#include <boost/algorithm/string.hpp>
+#include <string>
+#include <algorithm>
 
 #include "libfive/tree/opcode.hpp"
 
@@ -78,7 +78,7 @@ static void buildNames()
         for (auto& o : _opcode_names)
         {
             opcode_names[o.first] =
-                boost::algorithm::starts_with(o.second, "OP_")
+              o.second.find("OP_") == 0
                     ? o.second.substr(3)
                     : o.second;
         }
@@ -109,7 +109,7 @@ std::string Opcode::toScmString(Opcode op)
 
     auto s = opcode_names[op];
     std::replace(s.begin(), s.end(), '_', '-');
-    boost::algorithm::to_lower(s);
+    std::transform(s.begin(), s.end(), s.begin(), [](char ch) {return (char)::tolower(ch); });
     return s;
 }
 
@@ -126,7 +126,7 @@ Opcode::Opcode Opcode::fromScmString(std::string s)
     }
 
     // Be liberal in what you accept
-    boost::algorithm::to_lower(s);
+    std::transform(s.begin(), s.end(), s.begin(), [](char ch) {return (char)::tolower(ch); });
 
     auto itr = inverse.find(s);
     return itr != inverse.end() ? itr->second : INVALID;
