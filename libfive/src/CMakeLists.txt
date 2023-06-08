@@ -300,13 +300,20 @@ set_property(
 # Produce a library named 'libfive' on all platforms
 set_target_properties(libfive PROPERTIES PREFIX "")
 
-target_include_directories(libfive SYSTEM PUBLIC
-    ${Boost_INCLUDE_DIRS}
-    ${PNG_INCLUDE_DIR}
-    ${EIGEN_INCLUDE_DIRS}
-)
+#target_include_directories(libfive SYSTEM PUBLIC
+#${Boost_INCLUDE_DIRS}
+#${Boost_INCLUDE_DIR}
+#${PNG_INCLUDE_DIR}
+#../../eigen-3.4.0/
+#C:/_Dev/boost_1_82_0/
+#)
 target_include_directories(libfive PUBLIC
-    ../include
+ ../include
+#${Boost_INCLUDE_DIRS}
+#${Boost_INCLUDE_DIR}
+${PNG_INCLUDE_DIR}
+../../eigen-3.4.0/
+C:/_Dev/boost_1_82_0/
 )
 
 set(LIBS ${PNG_LIBRARIES})
