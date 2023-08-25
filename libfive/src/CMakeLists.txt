@@ -2,7 +2,7 @@ if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 endif()
 
-add_library(libfive SHARED
+add_library(libfive STATIC
     eval/base.cpp
     eval/deck.cpp
     eval/eval_interval.cpp
